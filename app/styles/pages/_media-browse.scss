@@ -27,12 +27,10 @@
     border-left: 1px solid darken($voodoo, 10);
     width: 240px;
     padding: 0;
-    padding-top: 20px;
     bottom: 0;
     user-select: none;
     cursor: default;
-    height: 100vh;
-
+    height: calc(100vh - 54px);
     position: fixed;
     top: 54px;
 
@@ -40,10 +38,12 @@
       display: none;
     }
     &.scrolled {
+    // TODO: Remove functionality
     }
   }
   .filter-wrapper {
     height: 100%;
+    padding-top: 20px;
     overflow: auto;
   }
 
@@ -277,7 +277,6 @@
   .category-filter {
     padding: 0;
     padding-bottom: 15px;
-    margin-bottom: 100px;
     .filter-header {
       padding: 0 10px;
     }
