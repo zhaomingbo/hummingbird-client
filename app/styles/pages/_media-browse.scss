@@ -2,6 +2,7 @@
   padding-top: 0;
   .global-container {
     max-width: 100%;
+    min-height: 100vh;
     padding-top: 54px;
     background: linear-gradient(90deg, $voodoo 50%, $alabaster 50%);
     @media (max-width: 768px) {
@@ -54,6 +55,7 @@
       padding-left: 30px;
     }
     .media-posters {
+      min-height: calc(100vh - 54px);
       padding: 75px 0 75px 280px;
       padding-right: 0;
       overflow-y: auto;
