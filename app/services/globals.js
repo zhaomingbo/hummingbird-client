@@ -5,10 +5,14 @@ import get from 'ember-metal/get';
 export default Service.extend({
   fastboot: service(),
 
+  /**
+   * TEMP:
+   * As Fastboot is only termporarily being served to crawlers, we don't want the returned host
+   * to be the herokuapp url.
+   */
   getHost() {
     if (get(this, 'fastboot.isFastBoot')) {
-      const loc = get(this, 'fastboot.request');
-      return `${get(loc, 'protocol')}://${get(loc, 'host')}`;
+      return 'https://kitsu.io';
     }
     const loc = window.location;
     return `${loc.protocol}//${loc.host}`;
