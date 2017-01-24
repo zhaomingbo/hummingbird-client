@@ -3,7 +3,6 @@ import get from 'ember-metal/get';
 import computed from 'ember-computed';
 import { modelType } from 'client/helpers/model-type';
 import moment from 'moment';
-/* global humanizeDuration */
 
 const computedProduction = key => (
   computed('media.animeProductions', function() {
@@ -63,7 +62,7 @@ export default Component.extend({
     const count = get(this, 'media.episodeCount');
     const length = get(this, 'media.episodeLength');
     const time = moment.duration(count * length, 'minutes');
-    return humanizeDuration(time.asMilliseconds(), { largest: 1 });
+    return time.humanize();
   }),
 
   /**

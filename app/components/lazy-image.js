@@ -3,6 +3,7 @@ import Component from 'ember-component';
 import get from 'ember-metal/get';
 import service from 'ember-service/inject';
 import { scheduleOnce } from 'ember-runloop';
+import canUseDOM from 'ember-metrics/utils/can-use-dom';
 
 export default Component.extend({
   attributeBindings: ['alt', 'title'],
@@ -15,6 +16,7 @@ export default Component.extend({
 
   didReceiveAttrs() {
     this._super(...arguments);
+    if (!canUseDOM) { return; }
     scheduleOnce('afterRender', () => {
       if (Ember.testing) {
         this._loadImage();

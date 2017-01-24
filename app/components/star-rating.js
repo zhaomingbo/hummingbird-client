@@ -2,9 +2,15 @@ import StarRatingComponent from 'ember-star-rating/components/star-rating';
 import service from 'ember-service/inject';
 import get from 'ember-metal/get';
 import { invokeAction } from 'ember-invoke-action';
+import canUseDOM from 'ember-metrics/utils/can-use-dom';
 
 export default StarRatingComponent.extend({
   session: service(),
+
+  didReceiveAttrs() {
+    if (!canUseDOM) { return; }
+    this._super(...arguments);
+  },
 
   click() {
     if (get(this, 'session.hasUser')) {
