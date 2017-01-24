@@ -81,6 +81,7 @@
     "eslint-config-unstandard": "^1.4.2",
     "eslint-plugin-import": "^2.2.0",
     "fastboot-app-server": "^1.0.0-rc.5",
+    "fastboot-redis-cache": "^0.1.0",
     "loader.js": "^4.0.11",
     "moment": "^2.17.1",
     "moment-timezone": "^0.5.9",
