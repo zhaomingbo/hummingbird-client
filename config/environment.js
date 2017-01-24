@@ -84,11 +84,11 @@ module.exports = function(environment) {
       }
     ],
 
-    // ember-cli-sentry
+    // ember-cli-sentry (Disabled for fastboot due to lack of support at this time)
     sentry: {
       dsn: 'https://9c9c723278a1456299a9da5842251bdf@sentry.io/119044',
       cdn: 'https://cdn.ravenjs.com/3.9.1/raven.min.js',
-      development: environment !== 'production',
+      development: environment !== 'production' || process.env.EMBER_CLI_FASTBOOT,
       whitelistUrls: [/https?:\/\/((staging)\.)?kitsu\.io/],
       ravenOptions: {
         ignoreErrors: [
