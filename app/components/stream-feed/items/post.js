@@ -12,6 +12,7 @@ import ClipboardMixin from 'client/mixins/clipboard';
 import errorMessages from 'client/utils/error-messages';
 import moment from 'moment';
 import { invoke, invokeAction } from 'ember-invoke-action';
+import canUseDOM from 'ember-metrics/utils/can-use-dom';
 
 export default Component.extend(ClipboardMixin, {
   classNameBindings: ['post.isNew:new-post', 'isPinnedPost:pinned-post'],
@@ -134,7 +135,7 @@ export default Component.extend(ClipboardMixin, {
   _overflow() {
     if (!get(this, 'isExpanded')) {
       scheduleOnce('afterRender', () => {
-        if (get(this, 'isDestroyed')) { return; }
+        if (get(this, 'isDestroyed') || !canUseDOM) { return; }
         this._hideLongBody();
         const image = this.$('img');
         if (image && image.length > 0) {
