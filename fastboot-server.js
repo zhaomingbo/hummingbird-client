@@ -17,11 +17,9 @@ const options = {
 };
 
 if (process.env.FASTBOOT_CACHE) {
-  const RedisCache = require('fastboot-redis-cache');
-  const cache = new RedisCache({
-    host: process.env.REDIS_HOST,
-    port: process.env.REDIS_PORT,
-    expiration: process.env.REDIS_EXP
+  const ClusterNodeCache = require('fastboot-cluster-node-cache');
+  const cache = new ClusterNodeCache({
+    expiration: process.env.CACHE_EXPIRATION
   });
   Object.assign(options, { cache: cache });
 }

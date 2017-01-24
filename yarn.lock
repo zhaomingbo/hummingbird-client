@@ -906,7 +906,7 @@ block-stream@*:
   dependencies:
     inherits "~2.0.0"
 
-bluebird@^2.9.33:
+bluebird@^2.9.14, bluebird@^2.9.33:
   version "2.11.0"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-2.11.0.tgz#534b9033c022c9579c56ba3b3e5a5caafbb650e1"
 
@@ -1630,6 +1630,13 @@ clone@^1.0.2:
 clone@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/clone/-/clone-2.1.0.tgz#9c715bfbd39aa197c8ee0f8e65c3912ba34f8cd6"
+
+cluster-node-cache@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/cluster-node-cache/-/cluster-node-cache-0.1.0.tgz#f3fe6a013882e076bef9630db6ea7e1ed0091e98"
+  dependencies:
+    bluebird "^2.9.14"
+    node-cache "^1.1.0"
 
 cmd-shim@~2.0.2:
   version "2.0.2"
@@ -3439,6 +3446,12 @@ fastboot-app-server@^1.0.0-rc.5:
     fastboot-express-middleware "^1.0.0-rc.4"
     fs-promise "^0.3.1"
 
+fastboot-cluster-node-cache@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/fastboot-cluster-node-cache/-/fastboot-cluster-node-cache-0.1.0.tgz#7c86a58d4454edafd181352cd948a440745ebcc0"
+  dependencies:
+    cluster-node-cache "^0.1.0"
+
 fastboot-express-middleware@1.0.0-rc.3:
   version "1.0.0-rc.3"
   resolved "https://registry.yarnpkg.com/fastboot-express-middleware/-/fastboot-express-middleware-1.0.0-rc.3.tgz#9b98076a815e200d071f256c95c602197dec5134"
@@ -5179,6 +5192,12 @@ natural-compare@^1.4.0:
 negotiator@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
+
+node-cache@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/node-cache/-/node-cache-1.1.0.tgz#186365032d2395bdff73404178fb2bc8981ace70"
+  dependencies:
+    underscore "*"
 
 node-dir@^0.1.16:
   version "0.1.16"
@@ -6961,7 +6980,7 @@ underscore.string@~2.3.3:
   version "2.3.3"
   resolved "https://registry.yarnpkg.com/underscore.string/-/underscore.string-2.3.3.tgz#71c08bf6b428b1133f37e78fa3a21c82f7329b0d"
 
-underscore@>=1.8.3:
+underscore@*, underscore@>=1.8.3:
   version "1.8.3"
   resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.8.3.tgz#4f3fb53b106e6097fcf9cb4109f2a5e9bdfa5022"
 
