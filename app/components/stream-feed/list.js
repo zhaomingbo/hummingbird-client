@@ -13,6 +13,7 @@ import getter from 'client/utils/getter';
 import { modelType } from 'client/helpers/model-type';
 import errorMessages from 'client/utils/error-messages';
 import { unshiftObjects } from 'client/utils/array-utils';
+import canUseDOM from 'ember-metrics/utils/can-use-dom';
 
 export default Component.extend({
   readOnly: false,
@@ -107,6 +108,7 @@ export default Component.extend({
 
   didReceiveAttrs() {
     this._super(...arguments);
+    if (!canUseDOM) { return; }
     get(this, 'headTags').collectHeadTags();
     set(this, 'filter', get(this, 'lastUsed.feedFilter') || get(this, 'streamFilter') || 'all');
 
