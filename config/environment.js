@@ -124,7 +124,8 @@ module.exports = function(environment) {
       adwords: environment === 'production' && !isStaging,
       ads: {
         enabled: environment === 'production' && !isStaging,
-        client: 'ca-pub-1730996169473196'
+        client: 'ca-pub-1730996169473196',
+        pageads: true
       }
     }
   };
