@@ -151,7 +151,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.APIHost = 'https://kitsu.io';
+    ENV.APP.APIHost = 'https://kitsu.io';
   }
 
   // Staging app @ Heroku
