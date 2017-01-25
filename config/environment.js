@@ -6,32 +6,26 @@ module.exports = function(environment) {
     environment: environment,
     rootURL: '/',
     locationType: 'auto',
-    isStaging: isStaging,
-    APIHost: undefined,
     EmberENV: {
       FEATURES: {}
     },
-    APP: {},
+    APP: {
+      APIHost: undefined,
+      isStaging: isStaging,
+    },
     EXTEND_PROTOTYPES: {
       Date: false
     },
-
-    // fastboot
+    i18n: { defaultLocale: 'en' },
+    moment: { allowEmpty: true, includeTimezone: '2010-2020' },
     fastboot: {
-      hostWhitelist: ['kitsu.io', 'staging.kitsu.io', /^kitsu-web-\S+\.herokuapp\.com$/,  /^localhost:\d+$/]
+      hostWhitelist: [
+        'kitsu.io',
+        'staging.kitsu.io',
+        /^kitsu-web-\S+\.herokuapp\.com$/,
+        /^localhost:\d+$/
+      ]
     },
-    'ember-cli-head': {
-      suppressBrowserRender: true
-    },
-
-    // ember-simple-auth
-    'ember-simple-auth': {
-      authenticationRoute: 'dashboard',
-      routeIfAlreadyAuthenticated: 'dashboard',
-      store: 'session-store:adaptive'
-    },
-
-    // torii
     torii: {
       providers: {
         'facebook-connect': {
@@ -41,8 +35,6 @@ module.exports = function(environment) {
         }
       }
     },
-
-    // ember-metrics
     metricsAdapters: [
       {
         name: 'GoogleAnalytics',
@@ -83,8 +75,6 @@ module.exports = function(environment) {
         config: { id: '237149646711154' }
       }
     ],
-
-    // ember-cli-sentry (Disabled for fastboot due to lack of support at this time)
     sentry: {
       dsn: 'https://9c9c723278a1456299a9da5842251bdf@sentry.io/119044',
       cdn: 'https://cdn.ravenjs.com/3.9.1/raven.min.js',
@@ -108,23 +98,6 @@ module.exports = function(environment) {
         ]
       }
     },
-
-    // ember-i18n
-    i18n: {
-      defaultLocale: 'en'
-    },
-
-    // ember-moment
-    moment: {
-      allowEmpty: true,
-      includeTimezone: '2010-2020'
-    },
-
-    // ember-cli-mirage
-    'ember-cli-mirage': {
-      enabled: environment === 'test'
-    },
-
     stream: {
       realtime: {
         enabled: true,
@@ -144,8 +117,9 @@ module.exports = function(environment) {
         }
       }
     },
-
-    // Google AdWords / AdSense
+    'ember-cli-mirage': {
+      enabled: environment === 'test'
+    },
     google: {
       adwords: environment === 'production' && !isStaging,
       ads: {
