@@ -64,7 +64,6 @@ module.exports = function(defaults) {
     app.import('bower_components/jquery-hoverintent/jquery.hoverIntent.js');
     app.import('bower_components/getstream/dist/js_min/getstream.js');
   }
-  app.import('bower_components/humanize-duration/humanize-duration.js');
 
   return app.toTree();
 };

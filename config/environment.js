@@ -10,7 +10,7 @@ module.exports = function(environment) {
       FEATURES: {}
     },
     APP: {
-      APIHost: undefined,
+      APIHost: 'https://kitsu.io',
       isStaging: isStaging,
     },
     EXTEND_PROTOTYPES: {
@@ -23,7 +23,8 @@ module.exports = function(environment) {
         'kitsu.io',
         'staging.kitsu.io',
         /^kitsu-web-\S+\.herokuapp\.com$/,
-        /^localhost:\d+$/
+        /^localhost:\d+$/,
+        /^kitsu\.dev:\d+$/
       ]
     },
     torii: {
