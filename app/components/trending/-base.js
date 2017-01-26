@@ -10,6 +10,7 @@ export default Component.extend({
   currentTab: null,
   currentItems: null,
   store: service(),
+  fastboot: service(),
 
   getDataTask() {
     throw new Error('You must define your own `getDataTask`');
@@ -28,7 +29,11 @@ export default Component.extend({
       return set(this, 'currentItems', get(this, `${type}Results`));
     }
     // request trending media for the specified type
-    get(this, 'getDataTask').perform(type).then((results) => {
+    const promise = get(this, 'getDataTask').perform(type);
+    if (get(this, 'fastboot.isFastBoot')) {
+      get(this, 'fastboot').deferRendering(promise);
+    }
+    promise.then((results) => {
       set(this, `${type}Results`, results);
       set(this, 'currentItems', results);
     }).catch((error) => {

@@ -1,6 +1,7 @@
 import Route from 'ember-route';
 import get from 'ember-metal/get';
 import set from 'ember-metal/set';
+import service from 'ember-service/inject';
 import { isEmpty, typeOf } from 'ember-utils';
 import { isEmberArray } from 'ember-array/utils';
 import { task, timeout } from 'ember-concurrency';
@@ -18,6 +19,7 @@ export default Route.extend(QueryableMixin, PaginationMixin, {
     year: { refreshModel: true, replace: true }
   },
   templateName: 'media/index',
+  fastboot: service(),
 
   refreshDebounced: task(function* () {
     yield timeout(1000);
@@ -53,7 +55,11 @@ export default Route.extend(QueryableMixin, PaginationMixin, {
     const filters = this._buildFilters(params);
     const options = Object.assign(filters, hash);
     const [mediaType] = get(this, 'routeName').split('.');
-    return { taskInstance: get(this, 'modelTask').perform(mediaType, options) };
+    const promise = get(this, 'modelTask').perform(mediaType, options);
+    if (get(this, 'fastboot.isFastBoot')) {
+      get(this, 'fastboot').deferRendering(promise);
+    }
+    return { taskInstance: promise };
   },
 
   afterModel() {
