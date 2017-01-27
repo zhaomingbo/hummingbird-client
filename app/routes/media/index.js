@@ -8,7 +8,7 @@ import { task, timeout } from 'ember-concurrency';
 import jQuery from 'jquery';
 import QueryableMixin from 'client/mixins/routes/queryable';
 import PaginationMixin from 'client/mixins/routes/pagination';
-import moment from 'moment';
+import { moment } from 'client/utils/moment';
 import canUseDOM from 'ember-metrics/utils/can-use-dom';
 
 export default Route.extend(QueryableMixin, PaginationMixin, {
