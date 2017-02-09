@@ -4,26 +4,7 @@
 {{/unless}}
 
 <h2 class="d-inline-block">{{t "media.routes.show.characters.title" title=media.computedTitle}}</h2>
-{{#if (and taskValue (gt availableLanguages.length 1))}}
-  <div class="characters--language--header">
-    {{#bootstrap/bs-dropdown as |dropdown|}}
-      {{#dropdown.button}}
-        {{capitalize language}}
-      {{/dropdown.button}}
-      {{#dropdown.menu}}
-        {{#each availableLanguages as |option|}}
-          {{#dropdown.menu-item onClick=(action (mut language) (to-lower option))}}
-            {{option}}
-            {{#if (eq (to-lower option) language)}}
-              {{svg-jar "checkmark"}}
-            {{/if}}
-          {{/dropdown.menu-item}}
-        {{/each}}
-      {{/dropdown.menu}}
-    {{/bootstrap/bs-dropdown}}
-  </div>
-{{/if}}
-<p class="w-100">{{t (concat "media.routes.show.characters.subtitle." media.modelType) language=(capitalize language) title=media.computedTitle}}</p>
+<p class="w-100">{{t (concat "media.routes.show.characters.subtitle." media.modelType) title=media.computedTitle}}</p>
 
 {{#if model.taskInstance.isRunning}}
   <div class="text-xs-center w-100 m-t-1 m-b-1">
@@ -36,23 +17,25 @@
   </div>
 {{else if taskValue}}
   <section class="character-grid">
-    {{#each taskValue as |casting|}}
+    {{#each taskValue as |item|}}
       <article class="media-character">
         <div class="character-wrapper">
           <div class="character-image">
             <a href="#">
-              {{lazy-image src=(image casting.character.image)}}
+              {{lazy-image src=(image item.character.image)}}
             </a>
           </div>
           <div class="character-name">
-            <a href="#">{{casting.character.name}}</a>
+            <a href="#">{{item.character.name}}</a>
           </div>
-          {{#if casting.person}}
+          {{#if item.castings}}
             <div class="character-voice-actors">
-              <a href="#" class="va">
-                {{lazy-image src=(image casting.person.image)}}
-                {{casting.person.name}}
-              </a>
+              {{#each item.castings as |casting|}}
+                <a href="#" class="va">
+                  {{lazy-image src=(image casting.person.image)}}
+                  <span>{{casting.person.name}} (<span class="va-locale">{{casting.locale}}</span>)</span>
+                </a>
+              {{/each}}
             </div>
           {{/if}}
         </div>

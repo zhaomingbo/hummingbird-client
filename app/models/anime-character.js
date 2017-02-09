@@ -7,5 +7,5 @@ export default Base.extend({
 
   anime: belongsTo('anime'),
   character: belongsTo('character'),
-  castings: hasMany('casting')
+  castings: hasMany('anime-casting')
 });

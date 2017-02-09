@@ -112,8 +112,8 @@ export default {
         characters: {
           title: '{{title}} Characters',
           subtitle: {
-            anime: 'The following is a full list of characters and their {{language}} voice actors from the anime {{title}}',
-            manga: 'The following is a full list of characters for the manga {{title}}'
+            anime: 'The following is a full list of characters from the anime {{title}}.',
+            manga: 'The following is a full list of characters from the manga {{title}}.'
           }
         },
         ranking: {
