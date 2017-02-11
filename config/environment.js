@@ -16,6 +16,7 @@ module.exports = function(environment) {
     EXTEND_PROTOTYPES: {
       Date: false
     },
+    'ember-cli-head': { suppressBrowserRender: true },
     i18n: { defaultLocale: 'en' },
     moment: { allowEmpty: true, includeTimezone: '2010-2020' },
     fastboot: {
