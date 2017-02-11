@@ -1,10 +1,12 @@
 import Router from 'ember-router';
+import get from 'ember-metal/get';
 import service from 'ember-service/inject';
 import { scheduleOnce } from 'ember-runloop';
-import get from 'ember-metal/get';
-import config from './config/environment';
+import Breadcrumbs from 'client/mixins/breadcrumbs';
+import config from 'client/config/environment';
+import canUseDOM from 'client/utils/can-use-dom';
 
-const RouterInstance = Router.extend({
+const RouterInstance = Router.extend(Breadcrumbs, {
   location: config.locationType,
   rootURL: config.rootURL,
   globals: service(),
@@ -13,16 +15,26 @@ const RouterInstance = Router.extend({
 
   didTransition() {
     this._super(...arguments);
+
     scheduleOnce('afterRender', this, () => {
       get(this, 'headData').set('url', get(this, 'globals').getFullURL());
-      const page = get(this, 'url');
-      const title = get(this, 'currentRouteName');
-      get(this, 'metrics').trackPage({ page, title });
     });
+
+    if (canUseDOM) {
+      this._trackPage();
+    }
   },
 
   setTitle(title) {
     get(this, 'headData').set('title', title);
+  },
+
+  _trackPage() {
+    scheduleOnce('afterRender', () => {
+      const page = get(this, 'url');
+      const title = get(this, 'currentRouteName');
+      get(this, 'metrics').trackPage({ page, title });
+    });
   }
 });
 
