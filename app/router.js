@@ -64,6 +64,7 @@ RouterInstance.map(function() {
     // this.route('notifications');
     this.route('blocking');
     // this.route('apps');
+    this.route('account');
   });
 
   this.route('admin', function() {

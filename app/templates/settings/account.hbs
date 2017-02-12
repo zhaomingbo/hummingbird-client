@@ -1,0 +1,24 @@
+<h1>Account</h1>
+
+<div class="settings--section-head">
+  Danger Zone! Deleting your account will remove your data from Kitsu.
+</div>
+<div class="container">
+  <div class="form-group row">
+    <button class="button btn-danger btn-lg btn-block" onclick={{action (toggle "confirmDeleteModal" this)}}>
+      {{#if deleteAccount.isRunning}}
+        {{loading-spinner}}
+      {{else}}
+        Delete Account
+      {{/if}}
+    </button>
+
+    {{#if confirmDeleteModal}}
+      {{to-elsewhere named="modal" send=(component "modals/confirm-action"
+        title="Delete Account"
+        text="We're sorry to see you go. Deleting your account will remove all of your data from Kitsu."
+        onConfirm=(perform deleteAccount)
+        onClose=(toggle-action "confirmDeleteModal" this))}}
+    {{/if}}
+  </div>
+</div>
