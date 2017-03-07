@@ -13,6 +13,11 @@ const RouterInstance = Router.extend(Breadcrumbs, {
   metrics: service(),
   headData: service(),
 
+  willTransition() {
+    this._super(...arguments);
+    this._resetStructuredData();
+  },
+
   didTransition() {
     this._super(...arguments);
 
@@ -35,6 +40,10 @@ const RouterInstance = Router.extend(Breadcrumbs, {
       const title = get(this, 'currentRouteName');
       get(this, 'metrics').trackPage({ page, title });
     });
+  },
+
+  _resetStructuredData() {
+    get(this, 'headData').set('structuredData', {});
   }
 });
 
