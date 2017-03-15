@@ -34,6 +34,12 @@ export default {
           leaders: '{{group}} Leaders'
         }
       }
+    },
+    feedback: {
+      bugs: 'Bugs',
+      'bugs-anything': 'Bugs',
+      'feature-requests': 'Feature Requests',
+      'feature-requests-anything': 'Feature Requests'
     }
   },
   auth: {

@@ -74,6 +74,13 @@ RouterInstance.map(function() {
     });
   });
 
+  this.route('feedback', function() {
+    this.route('bugs');
+    this.route('bugs-anything', { path: '/bugs/*path' });
+    this.route('feature-requests');
+    this.route('feature-requests-anything', { path: '/feature-requests/*path' });
+  });
+
   this.route('users', { path: '/users/:name' }, function() {
     this.route('library');
     this.route('reviews');
