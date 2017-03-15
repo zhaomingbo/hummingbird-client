@@ -63,6 +63,17 @@ RouterInstance.map(function() {
     });
   });
 
+  this.route('groups', function() {
+    this.route('new');
+    this.route('group', { path: '/:slug' }, function() {
+      this.route('group-page', { path: '/' }, function() {
+        this.route('rules');
+        this.route('members');
+        this.route('leaders');
+      });
+    });
+  });
+
   this.route('users', { path: '/users/:name' }, function() {
     this.route('library');
     this.route('reviews');

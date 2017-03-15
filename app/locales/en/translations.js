@@ -24,6 +24,16 @@ export default {
     admin: {
       index: 'Admin',
       reports: 'Reports'
+    },
+    groups: {
+      index: 'Groups',
+      group: {
+        'group-page': {
+          rules: '{{group}} Rules',
+          members: '{{group}} Members',
+          leaders: '{{group}} Leaders'
+        }
+      }
     }
   },
   auth: {
